@@ -8,7 +8,7 @@ import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
 import { Grid, Image } from 'semantic-ui-react'
-import { Card, Feed, Segment, List, Header,Icon } from 'semantic-ui-react'
+import { Card, Segment, List, Header } from 'semantic-ui-react'
 
 const Content = () =>
   <Grid id="content" columns={3}>
@@ -32,6 +32,10 @@ const Content = () =>
 
               <a href="https://twitter.com/alexanderpann">
                 [Twitter]
+              </a>
+
+              <a href="mailto:alexander.pann@gmail.com">
+                [Mail]
               </a>
             </Card.Content>
           </Card.Content>
@@ -220,6 +224,10 @@ const Content = () =>
       <Card.Description>
       Demonstration app that allowed to control Philips Hue lights with gestures <i>(Android, Kotlin)</i>.
       </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+    <Image href="https://www.youtube.com/watch?v=nhD6PNcnAys" target="_blank" src='images/hue_gesture_video.png' alt="Tire pressure Simulator" size="small"/>
+   
     </Card.Content>
   </Card>
 
