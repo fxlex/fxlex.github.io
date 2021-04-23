@@ -1,6 +1,6 @@
 #background {
   width: 100%;
-  height: 150vh;
+  height: 1700px;
 }
 
 
@@ -25,8 +25,14 @@ a img:hover {
     transform: scale(3) !important;
     position: relative;
     z-index: 2;
+    border: 1px solid black;
 }
 
 .ui.feed>.event>.content .extra.images img {
   width: 12em;
+}
+
+.ui.card {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }

@@ -8,7 +8,7 @@ import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
 import { Grid, Image } from 'semantic-ui-react'
-import { Card, Feed, Segment, List, Header } from 'semantic-ui-react'
+import { Card, Feed, Segment, List, Header,Icon } from 'semantic-ui-react'
 
 const Content = () =>
   <Grid id="content" columns={3}>
@@ -38,111 +38,8 @@ const Content = () =>
         </Card>
       </Grid.Column>
       <Grid.Column largeScreen={5} computer={9} mobile={16}>
-        <Card fluid>
-          <Card.Content>
-            <Card.Header>Selection of previous work</Card.Header>
-          </Card.Content>
-          <Card.Content>
-            <Feed size="large">
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2012' />
-                  <Feed.Summary>
-                    ams AG <small>(Styria, Austria)</small>
-                  </Feed.Summary>
-                  <Feed.Extra text>
-                    Internship at the marketing communication department.
-                  </Feed.Extra>
-                  <Feed.Extra images>
-                    <a href="http://www.ams.com" target="_blank" rel="noreferrer">
-                      <img src='images/ams.svg' alt="ams AG" />
-                    </a>
-                  </Feed.Extra>
-                </Feed.Content>
-
-              </Feed.Event>
-
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2013 - present' />
-                  <Feed.Summary>
-                    Freelance work for ams AG
-              </Feed.Summary>
-                  <Feed.Extra text>
-                    Development of scripts and web tools that are used in production and by clients of ams AG. (web technologies, Python)
-                  </Feed.Extra>
-                </Feed.Content>
-              </Feed.Event>
-
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2015' />
-                  <Feed.Summary>
-                    Android app for solo entertainers
-                </Feed.Summary>
-                  <Feed.Extra text>
-                    Development of an Android app that targets solo musicians (Android, Kotlin).
-                  </Feed.Extra>
-                  <Feed.Extra images>
-                    <a href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" target="_blank" rel="noreferrer">
-                      <img src='images/ep45.png' alt="EP45" />
-                    </a>
-                  </Feed.Extra>
-                </Feed.Content>
-              </Feed.Event>
-
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2016' />
-                  <Feed.Summary>
-                    Hue Gesture
-                </Feed.Summary>
-                  <Feed.Extra text>
-                    Demonstration app that allowed to control Philips Hue lights with gestures (Android, Kotlin).
-                  </Feed.Extra>
-
-                </Feed.Content>
-              </Feed.Event>
-
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2016' />
-                  <Feed.Summary>
-                    Tire Pressure simulator
-                </Feed.Summary>
-                  <Feed.Extra text>
-                    Development of a simulator for ams AG for the long night of research (Unity, C#).
-                  </Feed.Extra>
-                  <Feed.Extra images>
-                    <a href="https://www.youtube.com/watch?v=q5y2tZ_kLn8" target="_blank" rel="noreferrer">
-                      <img src='images/tire_pressure_ams.png' alt="Tire pressure Simulator" />
-                    </a>
-                  </Feed.Extra>
-                </Feed.Content>
-              </Feed.Event>
-
-              <Feed.Event>
-                <Feed.Content>
-                  <Feed.Date content='2016' />
-                  <Feed.Summary>
-                    Weill Cornell Medicine, Cornell University <small>(New York City, USA)</small>
-                  </Feed.Summary>
-                  <Feed.Extra text>
-                    JetBrains MPS programmer for the institute for computational biomedicine of Weill Cornell Medicine (JetBrains MPS, Java, R).
-                  </Feed.Extra>
-                  <Feed.Extra images>
-                  <a href="https://weill.cornell.edu/" target="_blank" rel="noreferrer">
-                      <img src='images/weill_cornell.png' alt="Weill Cornell Medicine" />
-                    </a>
-                  </Feed.Extra>
-                </Feed.Content>
-              </Feed.Event>
-            </Feed>
-          </Card.Content>
-        </Card>
-
-        <Segment>
-          <Header as='h3'>Fields of expertise</Header>
+      <Segment>
+          <Header as='h3' color="blue" textAlign="center">Fields of expertise</Header>
           <b>Web technologies:</b>
           <List horizontal>
             <List.Item>
@@ -215,7 +112,7 @@ const Content = () =>
         </Segment>
 
         <Segment>
-          <Header as='h3'>Fields of interest</Header>
+          <Header as='h3' color="blue" textAlign="center">Fields of interest</Header>
           <b>Functional programming</b>
           <List horizontal>
             <List.Item>
@@ -244,6 +141,88 @@ const Content = () =>
           <br />
           <b>Programming paradigms</b>
         </Segment>
+      <Segment attached>
+      <Header textAlign="center" color="blue">Selection of previous work</Header>
+      </Segment>  
+      <Card fluid>
+    <Card.Content>
+      <Card.Header>Weill Cornell Medicine, Cornell University <small>(NYC, USA)</small></Card.Header>
+      <Card.Meta>
+        <span className='date'>2016</span>
+      </Card.Meta>
+      <Card.Description>
+      JetBrains MPS programmer for the institute for computational biomedicine of Weill Cornell Medicine <i>(JetBrains MPS, Java, R)</i>.
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <Image href="https://weill.cornell.edu/" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="small"/>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
+      <Card.Header> Freelance work for ams AG</Card.Header>
+      <Card.Meta>
+        <span className='date'>2013 - present</span>
+      </Card.Meta>
+      <Card.Description>
+        Development of scripts and web tools that are used in production and by clients of ams AG. <i>(web technologies, Python)</i>
+      </Card.Description>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
+      <Card.Header>ams AG</Card.Header>
+      <Card.Meta>
+        <span className='date'>2012</span> (Styria, Austria)
+      </Card.Meta>
+      <Card.Description>
+      Internship at the marketing communication department.
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <Image href="http://ams.com" target="_blank" src='images/ams.svg' size="small" alt="ams AG logo"/>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
+      <Card.Header>EP45</Card.Header>
+      <Card.Meta>
+        <span className='date'>2015</span>
+      </Card.Meta>
+      <Card.Description>
+      Development of an Android app that targets solo entertainers <i>(Android, Kotlin)</i>.
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" target="_blank" src='images/ep45.png' alt="EP45" size="small"/>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
+      <Card.Header>Tire pressure simulator</Card.Header>
+      <Card.Meta>
+        <span className='date'>2015</span>
+      </Card.Meta>
+      <Card.Description>
+      Development of a simulator for ams AG for the long night of research <i>(Unity, C#)</i>.
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <Image href="https://www.youtube.com/watch?v=q5y2tZ_kLn8" target="_blank" src='images/tire_pressure_ams.png' alt="Tire pressure Simulator" size="small"/>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
+      <Card.Header>Hue Gesture</Card.Header>
+      <Card.Meta>
+        <span className='date'>2016</span>
+      </Card.Meta>
+      <Card.Description>
+      Demonstration app that allowed to control Philips Hue lights with gestures <i>(Android, Kotlin)</i>.
+      </Card.Description>
+    </Card.Content>
+  </Card>
+
       </Grid.Column>
     </Grid.Row>
   </Grid>
