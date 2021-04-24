@@ -217,6 +217,20 @@ const Content = () =>
   </Card>
   <Card fluid>
     <Card.Content>
+      <Card.Header>Proxi Bird</Card.Header>
+      <Card.Meta>
+        <span className='date'>2015</span>
+      </Card.Meta>
+      <Card.Description>
+      Development of a demonstrator for mobile phone gesture sensor, presented at the World Mobile (WMC) Congress in Barcelona and at the Consumer Electronic Show (CES) in Las Vegas 2016
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <Image href="#" src='images/proxibird.png' alt="Proxibird" size="small"/>
+    </Card.Content>
+  </Card>
+  <Card fluid>
+    <Card.Content>
       <Card.Header>Hue Gesture</Card.Header>
       <Card.Meta>
         <span className='date'>2016</span>
