@@ -251,15 +251,12 @@ const Content = () =>
 
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.vantaRef = React.createRef()
-  }
+
   componentDidMount() {
     document.title = "Alexander Pann, B.Sc."
     this.vantaEffect = NET({
       THREE: THREE,
-      el: this.vantaRef.current,
+      el: document.body,
       color: 0x19b2d4,
       gyroControls: true,
     })
@@ -270,9 +267,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div ref={this.vantaRef} id="background">
           <Content />
-        </div>
       </>
     )
   }
