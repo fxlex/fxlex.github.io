@@ -256,7 +256,6 @@ class App extends React.Component {
     this.vantaRef = React.createRef()
   }
   componentDidMount() {
-    document.title = "Alexander Pann, B.Sc."
     this.vantaEffect = NET({
       THREE: THREE,
       el: this.vantaRef.current,

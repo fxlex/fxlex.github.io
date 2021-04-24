@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 
 import * as THREE from "three";
 window.THREE = THREE
 
+const App = React.lazy(() => import('./App'))
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<div style={{backgroundColor:'#23153c'}}></div>}>
+      <App />
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
