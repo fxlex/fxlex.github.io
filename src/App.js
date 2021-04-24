@@ -16,7 +16,7 @@ const Content = () =>
       <Grid.Column computer={1} largeScreen={4} />
       <Grid.Column align="center" computer={4} mobile={16}>
         <Card fluid>
-          <Image src='./me.jpg' wrapped ui={false} />
+          <Image src='./me.jpg' wrapped ui={false} alt="Alexander Pann" />
           <Card.Content>
             <Card.Header>Alexander Pann, B.Sc.</Card.Header>
             <Card.Meta>
@@ -47,25 +47,25 @@ const Content = () =>
           <b>Web technologies:</b>
           <List horizontal>
             <List.Item>
-              <Image avatar src='/images/html5.png' />
+              <Image avatar src='/images/html5.png' alt="HTML5" />
               <List.Content>
                 <List.Header>HTML5</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/react.png' />
+              <Image avatar src='/images/react.png' alt="React" />
               <List.Content>
                 <List.Header>React</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/vue.png' />
+              <Image avatar src='/images/vue.png' alt="Vue" />
               <List.Content>
                 <List.Header>Vue</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/es6.jpeg' />
+              <Image avatar src='/images/es6.jpeg' alt="JavaScript ES6" />
               <List.Content>
                 <List.Header>JavaScript ES6</List.Header>
               </List.Content>
@@ -75,19 +75,19 @@ const Content = () =>
           <b>Mobile:</b>
           <List horizontal>
             <List.Item>
-              <Image avatar src='/images/java.png' />
+              <Image avatar src='/images/java.png' alt="Java" />
               <List.Content>
                 <List.Header>Java</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/android.png' />
+              <Image avatar src='/images/android.png' alt="Android" />
               <List.Content>
                 <List.Header>Android</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/kotlin.png' />
+              <Image avatar src='/images/kotlin.png' alt="Kotlin" />
               <List.Content>
                 <List.Header>Kotlin</List.Header>
               </List.Content>
@@ -97,7 +97,7 @@ const Content = () =>
           <b>Scripts:</b>
           <List horizontal>
             <List.Item>
-              <Image avatar src='/images/python.png' />
+              <Image avatar src='/images/python.png' alt="Python" />
               <List.Content>
                 <List.Header>Python</List.Header>
               </List.Content>
@@ -107,7 +107,7 @@ const Content = () =>
           <b>DSLs:</b>
           <List horizontal>
             <List.Item>
-              <Image avatar src='/images/mps.png' />
+              <Image avatar src='/images/mps.png' alt="JetBrains MPS" />
               <List.Content>
                 <List.Header>JetBrains MPS</List.Header>
               </List.Content>
@@ -120,19 +120,19 @@ const Content = () =>
           <b>Functional programming</b>
           <List horizontal>
             <List.Item>
-              <Image avatar src='/images/haskell.png' />
+              <Image avatar src='/images/haskell.png' alt="Haskell" />
               <List.Content>
                 <List.Header>Haskell</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/f_sharp.png' />
+              <Image avatar src='/images/f_sharp.png' alt="F Sharp" />
               <List.Content>
                 <List.Header>F#</List.Header>
               </List.Content>
             </List.Item>
             <List.Item>
-              <Image avatar src='/images/scala.png' />
+              <Image avatar src='/images/scala.png' alt="Scala" />
               <List.Content>
                 <List.Header>Scala</List.Header>
               </List.Content>
@@ -159,7 +159,7 @@ const Content = () =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <Image href="https://weill.cornell.edu/" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="small"/>
+      <Image href="https://weill.cornell.edu/" rel="noreferrer" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="small"/>
     </Card.Content>
   </Card>
   <Card fluid>
@@ -184,7 +184,7 @@ const Content = () =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <Image href="http://ams.com" target="_blank" src='images/ams.svg' size="small" alt="ams AG logo"/>
+      <Image href="http://ams.com" target="_blank" rel="noreferrer" src='images/ams.svg' size="small" alt="ams AG logo"/>
     </Card.Content>
   </Card>
   <Card fluid>
@@ -198,7 +198,7 @@ const Content = () =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" target="_blank" src='images/ep45.png' alt="EP45" size="small"/>
+      <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="small"/>
     </Card.Content>
   </Card>
   <Card fluid>
@@ -212,7 +212,7 @@ const Content = () =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <Image href="https://www.youtube.com/watch?v=q5y2tZ_kLn8" target="_blank" src='images/tire_pressure_ams.png' alt="Tire pressure Simulator" size="small"/>
+      <Image href="https://www.youtube.com/watch?v=q5y2tZ_kLn8" target="_blank" rel="noreferrer" src='images/tire_pressure_ams.png' alt="Tire pressure Simulator" size="small"/>
     </Card.Content>
   </Card>
   <Card fluid>
@@ -240,7 +240,7 @@ const Content = () =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-    <Image href="https://www.youtube.com/watch?v=nhD6PNcnAys" target="_blank" src='images/hue_gesture_video.png' alt="Tire pressure Simulator" size="small"/>
+    <Image href="https://www.youtube.com/watch?v=nhD6PNcnAys" rel="noreferrer" target="_blank" src='images/hue_gesture_video.png' alt="Tire pressure Simulator" size="small"/>
    
     </Card.Content>
   </Card>
