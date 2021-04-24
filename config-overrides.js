@@ -1,1 +1,0 @@
-const { override, addWebpackAlias } = require('customize-cra');

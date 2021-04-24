@@ -4,12 +4,8 @@
   "homepage": "http://fxlex.github.io/",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "customize-cra": "^1.0.0",
+    "cra-preact": "^0.4.0",
     "react": "^17.0.2",
-    "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
@@ -21,9 +17,9 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "start": "cra-preact start",
+    "build": "cra-preact build",
+    "test": "cra-preact test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
