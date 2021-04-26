@@ -10,7 +10,7 @@ export default class FieldsOfInterestComponent extends React.Component {
         <Segment>
             <Header as='h3' color="blue" textAlign="center">Fields of interest</Header>
             <b>Functional programming</b>:
-            <List horizontal>
+            <List verticalAlign='middle'>
                 <List.Item>
                 <Image avatar src='/images/haskell.png' alt="Haskell" />
                 <List.Content>
@@ -30,7 +30,6 @@ export default class FieldsOfInterestComponent extends React.Component {
                 </List.Content>
                 </List.Item>
             </List>
-            <br />
             <List>
                 <List.Item>
                 <Icon name='right triangle' />
