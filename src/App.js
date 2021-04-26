@@ -116,6 +116,11 @@ class Content extends React.Component {
                   <Breadcrumb.Section>
                     <a href="mailto:alexander.pann@gmail.com" rel="noreferrer" target="_blank"><Icon name='mail' /></a>
                   </Breadcrumb.Section>
+                  <Breadcrumb.Divider />
+                  <Breadcrumb.Section>
+                    <a href="https://github.com/fxlex/fxlex.github.io" rel="noreferrer" target="_blank"><Icon name='code' /></a>
+                  </Breadcrumb.Section>
+                  
                 </Breadcrumb>
               </Card.Content>
             </Card.Content>
