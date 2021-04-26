@@ -54,7 +54,7 @@ a img:hover {
   flex-wrap: wrap;
 }
 
-.ui.menu .active.item, .ui.menu .item:hover {
+.ui.menu .active.item, .ui.menu a.item:hover {
   background: rgba(0,0,0,.20);
 }
 
