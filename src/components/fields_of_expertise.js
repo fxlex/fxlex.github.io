@@ -12,7 +12,7 @@ export default class FieldsOfExpertiseComponent extends React.Component {
         <b>Web technologies:</b>
         <List horizontal>
         <List.Item>
-            <Image avatar src='/images/html5.</List.Header>png' alt="HTML5" />
+            <Image avatar src='/images/html5.png' alt="HTML5" />
             <List.Content>
             HTML5
             </List.Content>
