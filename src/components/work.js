@@ -20,7 +20,7 @@ export default class AppComponent extends React.Component {
             <Card.Content extra>
                 <Image rounded href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/gelato.png' alt="Wafer Layout and Yield Simulator" size="medium" />
                 <br />
-            Simulator for Semiconductor Fabrication Yield
+            Simulator for Semiconductor Fabrication Yield [Try online]
             </Card.Content>
         </Card>
         <Card fluid>
