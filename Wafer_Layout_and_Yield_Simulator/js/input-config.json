@@ -1,0 +1,151 @@
+{
+  "projectName": {
+    "text": "Project name",
+    "placeholder": "My project",
+    "type": "string",
+    "required":"true"
+ },
+  "layoutDataSize": {
+    "elements": {
+      "layoutDataSizeX": {
+        "text": "Layout data size x",
+        "value": "3000",
+        "step": "0.01",
+        "unit": "µm",
+        "required": "true",
+        "type":"float"
+      },
+      "layoutDataSizeY": {
+        "text": "Layout data size y",
+        "value": "3000",
+        "step": "0.01",
+        "unit": "µm",
+        "required": "true",
+        "type":"float"
+      }
+    }
+  },
+
+  "technology": {
+    "text": "Technology",
+    "type":"checkbox",
+    "unit": "µm",
+    "default": "CMOS 0.18",
+    "required":"false",
+    "config":"technology-config.json"
+  },
+
+  "scribeLineWidth": {
+    "elements": {
+      "scribeLineWidthX": {
+        "text": "Scribeline width x",
+        "value": "80",
+        "step": "10",
+        "unit": "µm",
+        "required": "false",
+        "type":"integer"
+      },
+      "scribeLineWidthY": {
+        "text": "Scribeline width y",
+        "value": "80",
+        "step": "10",
+        "unit": "µm",
+        "required": "false",
+        "type":"integer"
+      }
+    }
+  },
+  
+"maximumRetSize": {
+    "elements": {
+      "maximumRetSizeX": {
+        "text": "Max reticle size x",
+        "value": "22000",
+        "step": "1000",
+        "unit": "µm",
+        "required": "false",
+        "type":"integer"
+      },
+      "maximumRetSizeY": {
+        "text": "Max reticle size y",
+        "value": "26000",
+        "step": "1000",
+        "unit": "µm",
+        "required": "false",
+        "type":"integer"
+      }
+    }
+  },
+  "maxExposureDiameter": {
+      "text": "Max exposure spot diameter",
+      "value": "31112",
+      "step": "1",
+      "unit": "µm",
+      "required": "false",
+      "type":"integer"
+  },
+  "waferSize": {
+    "text": "Wafer size",
+    "value": "200",
+    "step": "100",
+    "unit": "mm",
+    "required": "false",
+    "type":"integer"
+  },
+  "offZoneAndLaserMarkExclusion": {
+    "elements": {
+      "offZone": {
+        "text": "Off-zone",
+        "value": "3",
+        "step": "1",
+        "unit": "mm",
+        "required": "false",
+        "type":"integer"
+      },
+      "laserMarkExclusionHeight": {
+        "text": "Laser mark exclusion height",
+        "value": "6",
+        "step": "1",
+        "unit": "mm",
+        "required": "false",
+        "type":"integer"
+      }
+    }
+  },
+  "defectDensity": {
+    "text": "Defect density",
+    "value": "0.05",
+    "step": "0.001",
+    "unit": "cm<sup>-2</sup>",
+    "required": "false",
+    "type":"float"
+  },
+  "yieldModel": {
+    "text": "Yield model",
+    "type": "radio",
+    "defaultIndex": 1,
+    "values": [
+      "No",
+      "Seeds",
+      "Murphy",
+      "Berglund",
+      "Bose-Einstein"
+    ]
+  },
+  "optIncWidth": {
+    "text": "Optimization increment width",
+    "value": "50",
+    "step": "1",
+    "unit": "µm",
+    "required": "false",
+    "type":"float"
+  },
+  "s0": {
+     "value": "1",
+     "type":"hidden"
+  },
+  "n": {
+     "value": "1",
+     "type":"hidden"
+  }
+}

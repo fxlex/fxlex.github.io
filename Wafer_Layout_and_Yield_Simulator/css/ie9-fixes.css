@@ -1,0 +1,5 @@
+.dropdown.item.ui.visible > .menu,
+.dropdown.selection.ui.visible > .menu {
+    display: block !important;
+    visibility: visible !important;
+}
