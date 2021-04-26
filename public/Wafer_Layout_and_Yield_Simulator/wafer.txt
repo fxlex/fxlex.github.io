@@ -1,0 +1,635 @@
+// input from form
+float dataSizeX, dataSizeY;
+int scribelineWidthX, scribelineWidthY;
+int maximumRetSizeX, maximumRetSizeY;
+int waferDiameter;
+int offZone;
+int maxExposureDiameter;
+int laserMarkExclusionY;
+int yieldModelId;
+float defectDensity;
+int offsetInc;
+float s0;
+int n;
+
+// calculated
+float dieSizeX, dieSizeY;
+float waferRadius;
+float waferRadiusEf;
+float waferRadiusEfSq;
+float exposureFieldX, exposureFieldY;
+int arraySizeX = 0;
+int arraySizeY = 0;
+int dieCount;
+float offsetX, offsetY;
+float laserMarkY;
+
+boolean repaint = false;
+boolean firstRepaint = false;
+
+int NN2PIX = 1000;
+
+float scaleFac = 1;
+float drawFac = NN2PIX /2 / scaleFac;
+
+float lastOffsetX;
+int w, h;
+
+
+ArrayList<Integer> stepFieldsX = new ArrayList<Integer>();
+ArrayList<Integer> stepFieldsY = new ArrayList<Integer>();
+
+boolean[][][] includedDice;
+
+
+int greenCount, redCount, redCounter,redTryCounter;
+int redTryInitial = (int)random(100000000);
+
+void initValues(boolean valuesChanged) {
+if(valuesChanged) {
+waferDiameter = int($('#waferSize').ensure().val()) * 1000;
+waferRadius =  waferDiameter / 2f;
+
+dataSizeX = float($('#layoutDataSizeX').ensure().val());
+dataSizeY = float($('#layoutDataSizeY').ensure().val());
+
+scribelineWidthX = int($('#scribeLineWidthX').ensure().val());
+scribelineWidthY = int($('#scribeLineWidthY').ensure().val());
+
+dieSizeX = dataSizeX + scribelineWidthX;
+dieSizeY = dataSizeY + scribelineWidthY;
+
+laserMarkExclusionY = int($('#laserMarkExclusionHeight').ensure().val()) * 1000;
+
+maximumRetSizeX = int($('#maximumRetSizeX').ensure().val());
+maximumRetSizeY = int($('#maximumRetSizeY').ensure().val());
+
+offZone = int($('#offZone').ensure().val()) * 1000;
+
+maxExposureDiameter = int($('#maxExposureDiameter').ensure().val());
+
+defectDensity = float($('#defectDensity').ensure().val());
+
+waferRadiusEf = waferRadius - offZone;
+waferRadiusEfSq = waferRadiusEf * waferRadiusEf;
+
+yieldModelId = int($('input[name=yieldModel]:checked').ensure().val())
+
+offsetInc = int($('#optIncWidth').ensure().val());
+
+s0 = float($('#s0').ensure().val());
+
+n = int($('#n').ensure().val());
+}
+
+w = (int) ((waferDiameter) / drawFac);
+h = (int) ((waferDiameter) / drawFac);
+
+if(valuesChanged) {
+  repaint = false;
+  firstRepaint = false;
+}
+
+
+
+
+
+}
+
+int myround(float i, int v){
+    return round(i/v) * v;
+}
+
+void findArraySize() {
+  int maxArraySizeX = int(maximumRetSizeX / dieSizeX);
+  int maxArraySizeY = int(maximumRetSizeY / dieSizeY);
+  for (arraySizeX = maxArraySizeX; arraySizeX > 0; arraySizeX--) {
+    for (arraySizeY = maxArraySizeY; arraySizeY > 0; arraySizeY--) {
+      exposureFieldX = arraySizeX * dieSizeX;
+      exposureFieldY = arraySizeY * dieSizeY;
+      if (exposureFieldX * exposureFieldX + exposureFieldY * exposureFieldY <= maxExposureDiameter * maxExposureDiameter)
+        return;
+    }
+  }
+}
+
+void setup() {
+  initValues(true);
+  size(w, h);
+  noLoop();
+  smooth();
+  ellipseMode(RADIUS);
+  textFont(createFont("Georgia", 12));
+  textAlign(CENTER, CENTER);
+  initGraphics();
+  $('#csvDownload').ensure().click(function() {
+        exportToCSV();
+  })
+}
+
+void initGraphicsTimeOut(boolean valuesChanged) {
+     initValues(valuesChanged);
+      if (repaint) {
+
+        drawResult();
+        return;
+      }
+
+
+      findArraySize();
+      laserMarkY = waferRadius - laserMarkExclusionY;
+      findStepFields();
+}
+
+void initGraphics(boolean valuesChanged) {
+    var start = new Date().getTime();
+    initGraphicsTimeOut(valuesChanged);
+    if(!repaint)
+        repaint = true;
+    hideLoading();
+    var end = new Date().getTime();
+    var time = end - start;
+    //println('Execution time: ' + time);
+}
+
+void displayResults() {
+    $('#exposureFieldX').ensure().val(exposureFieldX);
+    $('#exposureFieldY').ensure().val(exposureFieldY);
+
+    $('#arraySizeX').ensure().val(arraySizeX);
+    $('#arraySizeY').ensure().val(arraySizeY);
+
+    $('#stepOffsetX').ensure().val(offsetX);
+    $('#stepOffsetY').ensure().val(offsetY);
+
+    $('#goodSteps').ensure().val(stepFieldsX.size());
+
+    $('#grossDicePerWafer').ensure().val(dieCount);
+    $('#grossDicePerLot').ensure().val(perLot(dieCount));
+
+    $('#netDicePerWafer').ensure().val(greenCount);
+    $('#netDicePerLot').ensure().val(perLot(greenCount));
+   $('#yieldModelOutput').parent().parent().children("label").first().ensure().text("Yield (" + getYieldModelName() + ")");
+    float yieldModelValue = Math.round(getYieldModel() * 100 *100)/100;
+    $('#yieldModelOutput').ensure().val(yieldModelValue);
+
+}
+
+int perLot(int value) {
+  return value * 25;
+}
+
+void exportToCSV() {
+
+      var header = ["dataSizeX", "dataSizeY","scribelineWidthX", "scribelineWidthY", "maximumRetSizeX", "maximumRetSizeY","waferDiameter","offZone","maxExposureDiameter","laserMarkExclusionY","defectDensity","offsetInc","projectName","exposureFieldX", "exposureFieldY", "arraySizeX","arraySizeY","stepOffsetX","stepOffsetY",
+      "goodSteps","grossDicePerWafer","grossDicePerLot",getYieldModelName(),"netDicePerWafer","netDicePerLot"];
+      var data = [dataSizeX, dataSizeY,scribelineWidthX, scribelineWidthY, maximumRetSizeX, maximumRetSizeY,waferDiameter,offZone,maxExposureDiameter,laserMarkExclusionY,defectDensity,offsetInc,$('#projectName').ensure().val(),exposureFieldX, exposureFieldY, arraySizeX, arraySizeY, offsetX, offsetY,stepFieldsX.size(),
+      dieCount,perLot(dieCount),getYieldModel(),greenCount,perLot(greenCount)];
+      var data = [header, data];
+      var CSV = "";
+      data.forEach(function(infoArray, index){
+
+         dataString = infoArray.join(";");
+         CSV += dataString + "\r\n";
+
+      });
+      saveTextAs(CSV,"waferlayout.csv");
+}
+
+float getYieldModel() {
+    if(defectDensity == 0)
+        return 1;
+    else if(yieldModelId == 1) {
+        return getSeedsYield();
+    } else if(yieldModelId == 2) {
+        return getMurphy();
+    } else if(yieldModelId == 3) {
+       return getBerglund();
+    } else if(yieldModelId == 4) {
+       return getBoseEinstein();
+    }
+    return 1;
+}
+
+string getYieldModelName() {
+  if(yieldModelId == 1)
+    return "Seeds";
+   else if(yieldModelId == 2) {
+      return "Murphy";
+   } else if(yieldModelId == 3) {
+      return "Berglund";
+   } else if(yieldModelId == 4) {
+       return "Bose-Einstein"
+    }
+   return "No yield model";
+}
+
+float calcOffsetY() {
+  float ri = waferDiameter - laserMarkExclusionY - offZone;
+  int n = int(ri / exposureFieldY /2);
+  return waferRadius - (4 * exposureFieldY) - laserMarkExclusionY;
+}
+
+float getD0A() {
+  return defectDensity*(1e-8*dataSizeX*dataSizeY);
+}
+
+
+float getSeedsYield() {
+  return 1f / (1+getD0A());
+}
+
+float getBoseEinstein() {
+ return pow(getSeedsYield(),n);
+}
+float getMurphy() {
+  return pow((1-exp(-getD0A()))/getD0A(), 2);
+}
+
+float getD0() {
+    return defectDensity * 1e-2;
+}
+
+float getBerglund() {
+    return exp(-getD0A())
+           * exp(-defectDensity*((dataSizeX*1e-4+dataSizeY*1e-4)*s0 + (PI/2f)*s0*s0));
+}
+
+
+void drawResult() {
+  pushMatrix();
+  pushStyle();
+  if (!repaint) {
+    includedDice = new boolean[stepFieldsX.size()][arraySizeX][arraySizeY];
+  }
+
+  background(#f7f7f7);
+  translate(width/2f + translateX * scaleFac, height/2f + translateY * scaleFac);
+
+  for (int i = 0; i < stepFieldsX.size (); i++) {
+    float fieldX = stepFieldCoordinateX(stepFieldsX.get(i));
+    float fieldY = stepFieldCoordinateY(stepFieldsY.get(i));
+    strokeWeight(0.35);
+    boolean intersectCheck = distCenter(fieldX, fieldY) + 1.5 * max(exposureFieldX,exposureFieldY) > waferRadiusEf;
+    drawDices(i, fieldX,  fieldY, exposureFieldX, exposureFieldY, intersectCheck);
+    strokeWeight(1);
+    noFill();
+    stroke(0);
+    worldRect(fieldX,fieldY, exposureFieldX, exposureFieldY);
+  }
+
+
+
+  noStroke();
+  drawRedDie();
+
+  noFill();
+  stroke(0);
+  worldCircle(0, 0, waferRadius);
+  stroke(#85F591);
+  worldCircle(0, 0, waferRadiusEf);
+  // dashedCircle(worldCoordinate(waferRadiusEf), 2, 1);
+  //stroke(0, 0, 255);
+  //worldLine(-waferRadius, laserMarkY, waferRadius, laserMarkY);
+  fill(0);
+  float aDev = 1.5;
+  float a1 = radians(0-aDev);
+  float x1 = sin(a1) * waferRadius;
+  float y1 = cos(a1) * waferRadius;
+  float a2 = radians(0+aDev);
+  float x2 = sin(a2) * waferRadius;
+  float y2 = cos(a2) * waferRadius;
+  float ca = radians(0);
+  float cx = sin(ca) * (waferRadius-offZone/2);
+  float cy = cos(ca) * (waferRadius-offZone/2);
+  fill(#f7f7f7);
+  stroke(#f7f7f7);
+  worldRect(x1, y1-fromWorldCoordinate(1), x2-x1, fromWorldCoordinate(5));
+  stroke(0);
+  noFill();
+  stroke(0);
+  worldBezier(x1, y1, cx, cy, cx, cy, x2, y2);
+  noStroke();
+  fill(0);
+  worldRect(-5000, laserMarkY, 10000, 2000);
+  if (!firstRepaint)
+    firstRepaint = true;
+
+  popStyle();
+  popMatrix();
+}
+
+void findStepFields() {
+  offsetY = calcOffsetY();
+  int nX = int((waferRadius /  exposureFieldX) + 3);
+  int nY = int((waferRadius /  exposureFieldY) + 3);
+  int oldDiceCount = 0;
+
+
+  lastOffsetX = -exposureFieldX/2f-1;
+  for (offsetX = -exposureFieldX/2f; offsetX <= exposureFieldX/2f; offsetX += offsetInc) {
+    ArrayList<Integer> includedStepFieldsX = new ArrayList<Integer>();
+    ArrayList<Integer> includedStepFieldsY = new ArrayList<Integer>();
+    for (int x = -nX; x < nX; x++) {
+      for (int y = -nY; y < nY; y++) {
+        if (stepFieldIncluded( x, y)) {
+
+          includedStepFieldsX.add(x);
+          includedStepFieldsY.add(y);
+        }
+      }
+    }
+        int diceCount = countDies(includedStepFieldsX, includedStepFieldsY);
+    boolean asNew = false;
+    if (diceCount > oldDiceCount) {
+      asNew = true;
+    } else if (diceCount == oldDiceCount) {
+      if (abs(offsetX) < abs(lastOffsetX)) {
+        asNew = true;
+      }
+    }
+    if (asNew) {
+
+      stepFieldsX = new ArrayList<Integer>(includedStepFieldsX);
+      stepFieldsY = new ArrayList<Integer>(includedStepFieldsY);
+      lastOffsetX = Math.round(offsetX*10)/10;
+      oldDiceCount = diceCount;
+      dieCount = oldDiceCount;
+    }
+  }
+
+    offsetX = lastOffsetX;
+    drawResult();
+    displayResults();
+
+}
+
+void drawRedDie() {
+  greenCount = (int)(dieCount * getYieldModel());
+  redCount = dieCount - greenCount;
+  redCounter = 0;
+  redTryCounter = redTryInitial;
+  randomSeed(redTryCounter);
+  int[][][] fields = new int[stepFieldsX.size()][arraySizeX][arraySizeY];
+  while (redCounter < redCount) {
+
+    int nX = (int)random(arraySizeX);
+    int nY = (int)random(arraySizeY);
+    int i = (int)random(stepFieldsX.size ());
+    float fieldX = stepFieldCoordinateX(stepFieldsX.get(i));
+    float fieldY = stepFieldCoordinateY(stepFieldsY.get(i));
+    boolean canBeColored = false;
+    if(fields[i][nX][nY] == 0)
+        fields[i][nX][nY] = includedDice[i][nX][nY];
+
+    if(fields[i][nX][nY] == 1)
+        canBeColored = true;
+
+    if(canBeColored) {
+        float x = diePosition(fieldX, dieSizeX, nX);
+        float y = diePosition(fieldY, dieSizeY, nY);
+        fill(255, 0, 0);
+        worldRect(x, y, dataSizeX, dataSizeY);
+        redCounter++;
+        fields[i][nX][nY] = -1;
+    }
+
+    redTryCounter++;
+  }
+}
+
+void drawDices(int diceN, float fieldX, float fieldY, float fieldW, float fieldH,boolean checkIntersect) {
+
+  for (int nX = 0; nX < arraySizeX; nX++) {
+    for (int nY = 0; nY < arraySizeY; nY++) {
+      int x = diePosition(fieldX, dieSizeX, nX);
+      int y = diePosition(fieldY, dieSizeY, nY);
+
+
+      if (!firstRepaint) {
+        if(!checkIntersect)
+          includedDice[diceN][nX][nY] = true;
+        else {
+          includedDice[diceN][nX][nY] = intersectsWafer(x, y);
+          }
+      }
+
+      if (includedDice[diceN][nX][nY]) {
+        fill(0, 255, 0);
+      } else {
+        fill(#C1BFBF);
+      }
+
+      worldRect(x, y, dataSizeX, dataSizeY);
+    }
+  }
+}
+
+
+boolean stepFieldIncluded(int nX, int nY) {
+  float x = stepFieldCoordinateX(nX);
+  float y = stepFieldCoordinateY(nY);
+  int count = 0;
+  if(distCenter(x, y) <= waferRadiusEf)
+    count++;
+
+  if(distCenter(x+exposureFieldX/2f, y+exposureFieldY/2f) <= waferRadiusEf)
+     count++;
+
+  if(distCenter(x+exposureFieldX, y) <= waferRadiusEf)
+    count++;
+
+  if(distCenter(x+exposureFieldX, y+exposureFieldY) <= waferRadiusEf)
+      count++;
+
+  if(distCenter(x, y+exposureFieldY) <= waferRadiusEf)
+      count++;
+
+  return count >= 3 && y + exposureFieldY <= laserMarkY;
+
+}
+
+int countDies(ArrayList<Integer> stepFieldsX, ArrayList<Integer> stepFieldsY) {
+  int count = 0;
+  for (int i = 0; i < stepFieldsX.size (); i++) {
+    float fieldX = stepFieldCoordinateX(stepFieldsX.get(i));
+    float fieldY = stepFieldCoordinateY(stepFieldsY.get(i));
+    if(distCenter(fieldX, fieldY) + 1.5 * max(exposureFieldX,exposureFieldY) < waferRadiusEf) {
+        count += arraySizeX * arraySizeY;
+        continue;
+        }
+
+    for (int nX = 0; nX < arraySizeX; nX++) {
+      for (int nY = 0; nY < arraySizeY; nY++) {
+        float x = diePosition(fieldX, dieSizeX, nX);
+        float y = diePosition(fieldY, dieSizeY, nY);
+
+        if (intersectsWafer(x, y)) {
+          count++;
+        }
+
+
+      }
+    }
+  }
+  return count;
+}
+
+boolean intersectsWafer(float x, float y)
+{
+  int cX = 0;
+  int cY = 0;
+  float cR = waferRadiusEf;
+  float[] pointsX = {
+    x + dataSizeX, x+dataSizeX, x, x
+  };
+  float[] pointsY = {
+    y, y+dataSizeY, y+dataSizeY, y
+  };
+  for (int i = 0; i < pointsX.length; i++) {
+    if ((cX - pointsX[i])*(cX - pointsX[i]) + (cY - pointsY[i]) * (cY - pointsY[i]) > cR * cR)
+      return false;
+  }
+  return true;
+}
+
+float translateX = 0;
+float translateY = 0;
+float zoomInc = 0.5;
+
+void draw() {
+}
+
+void zoomIn() {
+scaleFac += zoomInc;
+handleZoom();
+}
+
+void zoomOut() {
+scaleFac = max(scaleFac - zoomInc,1);
+handleZoom();
+}
+
+void handleZoom() {
+drawFac = NN2PIX /2 / scaleFac;
+initGraphics(false);
+}
+
+void resetZoom() {
+  scaleFac = 1;
+  translateX = 0;
+  translateY = 0;
+  handleZoom();
+}
+
+void keyPressed() {
+  if (keyCode == 187) { // +
+    zoomIn();
+  } else if (keyCode == 189) { // -
+    zoomOut();
+  } else if (keyCode == 32) { // space
+    resetZoom();
+  }
+
+
+}
+
+void mouseDragged() {
+  translateX += (mouseX - pmouseX) / scaleFac;
+  translateY += (mouseY - pmouseY) /scaleFac;
+
+  initGraphics(false);
+}
+
+
+void mouseClicked() {
+$('#canvas').attr("tabindex", "0");
+$('#canvas').focus();
+}
+
+void dashedCircle(float radius, int dashWidth, int dashSpacing) {
+  int steps = 200;
+  int dashPeriod = dashWidth + dashSpacing;
+  boolean lastDashed = false;
+  for (int i = 0; i < steps; i++) {
+    boolean curDashed = (i % dashPeriod) < dashWidth;
+    if (curDashed && !lastDashed) {
+      beginShape();
+    }
+    if (!curDashed && lastDashed) {
+      endShape();
+    }
+    if (curDashed) {
+      float theta = map(i, 0, steps, 0, TWO_PI);
+      vertex(cos(theta) * radius, sin(theta) * radius);
+    }
+    lastDashed = curDashed;
+  }
+  if (lastDashed) {
+    endShape();
+  }
+}
+
+void worldLine(float x1, float y1, float w1, float h1) {
+  float wx1 = worldCoordinate(x1);
+  float wy1 = worldCoordinate(y1);
+  float wx2 = worldCoordinate(w1);
+  float wy2 = worldCoordinate(h1);
+  line(wx1, wy1, wx2, wy2);
+}
+
+void worldRect(float x, float y, float w, float h) {
+  float wx = worldCoordinate(x);
+  float wy = worldCoordinate(y);
+  float ww = worldCoordinate(w);
+  float wh = worldCoordinate(h);
+  rect(wx, wy, ww, wh);
+}
+
+void worldCircle(float x, float y, float r) {
+  float wx = worldCoordinate(x);
+  float wy = worldCoordinate(y);
+  float wr = worldCoordinate(r);
+  ellipse(wx, wy, wr, wr);
+}
+
+void worldBezier(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) {
+  float wx1 = worldCoordinate(x1);
+  float wy1 = worldCoordinate(y1);
+  float wx2 = worldCoordinate(x2);
+  float wy2 = worldCoordinate(y2);
+  float wx3 = worldCoordinate(x3);
+  float wy3 = worldCoordinate(y3);
+  float wx4 = worldCoordinate(x4);
+  float wy4 = worldCoordinate(y4);
+  bezier(wx1,wy1,wx2,wy2,wx3,wy3,wx4,wy4);
+}
+
+float worldCoordinate(float pos) {
+  return pos / drawFac;
+}
+
+float fromWorldCoordinate(float pos) {
+  return pos * drawFac;
+}
+
+float diePosition(float stepFieldPos, float dieSize, int n) {
+  return stepFieldPos + n * dieSize;
+}
+
+float stepFieldCoordinateX(int n) {
+  return n * exposureFieldX + offsetX;
+}
+
+float stepFieldCoordinateY(int n) {
+  return n * exposureFieldY + offsetY;
+}
+
+float half(float pos) {
+  return pos / 2f;
+}
+
+public float distCenter(float x, float y) {
+    return (float) Math.sqrt(x*x + y*y);
+  }
+

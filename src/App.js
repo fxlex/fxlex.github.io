@@ -20,8 +20,13 @@ const panes = [
           <span className='date'>2013 - present</span>
         </Card.Meta>
         <Card.Description>
-          Development of scripts and web tools that are used in production and by clients of ams AG. <i>(web technologies, Python)</i>
+          Development of 30+ scripts and web tools that are used in production and by clients of ams AG. <i>(web technologies, Python)</i>
         </Card.Description>
+      </Card.Content>
+	 <Card.Content extra>
+        <Image href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/Gelato.JPG' alt="Wafer Layout and Yield Simulator" size="small"/>
+		 			<br />
+			Simulator for Semiconductor Fabrication Yield
       </Card.Content>
     </Card>
     <Card fluid>
@@ -109,6 +114,22 @@ const panes = [
     
       </Card.Content>
     </Card>
+	   
+    <Card fluid>
+      <Card.Content>
+        <Card.Header>Website: Building Contractor</Card.Header>
+        <Card.Meta>
+          <span className='date'>2021</span>
+        </Card.Meta>
+        <Card.Description>
+        Updates for Website of Building Contractor.
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+      <Image href="http://www.baumeisterpann.at" rel="noreferrer" target="_blank" src='images/baumeisterpann.jpg' alt="Baumeister Pann" size="small"/>
+    
+      </Card.Content>
+    </Card>
   </Tab.Pane> },
   { menuItem: 'Expertise/Interest', render: () => 
   <Tab.Pane>
@@ -174,7 +195,7 @@ const panes = [
       </List.Item>
     </List>
     <br />
-    <b>DSLs:</b>
+    <b><acronym title="domain specific language">DSL</acronym>:</b>
     <List horizontal>
       <List.Item>
         <Image avatar src='/images/mps.png' alt="JetBrains MPS" />

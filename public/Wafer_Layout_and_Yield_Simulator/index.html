@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <title>WaferLayout</title>
+
+    <link rel="stylesheet" type="text/css" href="css/semantic.min-blessed1.css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+    <!--[if IE 9]>
+    <link href="css/ie9-fixes.css" rel="stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+
+   <script src="js/lib/jquery-2.1.4.min.js"></script>
+    <script src="js/lib/bowser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+    <script src="js/lib/fileSaver.js"></script>
+    <script src="js/lib/processing.min.js"></script>
+</head>
+<body>
+<noscript>
+    <div class="ui negative message">
+        <i class="close icon"></i>
+        <div class="header">
+            This page doesn't work correctly without javascript.
+        </div>
+        <p>Please activate it in your settings and reload the page.
+        </p></div>
+</noscript>
+
+<div class="ui page grid" id="titleBar">
+        <div class="two wide column"><img width="211px" class="ui image" src="logo.gif"></div>
+<h1 class="ui header" id="header">
+        Wafer Layout and Yield Simulator
+</h1>
+        <div class="nine wide column"></div>
+</div>
+<main class="ui page grid">
+<div class="nine wide column">
+
+
+
+    <div class="ui top attached tabular menu" id="tabs">
+        <a class="active item" data-tab="input" id="inputTab">Input</a>
+        <a class="item" data-tab="output" id="outputTab">Output</a>
+    </div>
+    <div class="ui bottom attached active tab segment" data-tab="input">
+
+
+
+        <form class="ui form small" id="form">
+            <div class="ui warning message" id="optimizationWarning">
+                <div class="header">
+                   Optimization
+                </div>
+                Increment width can change resulting die count.
+            </div>
+                <!-- the form fields are included before #mandatoryInputs -->
+                <p id="mandatoryInputs"><span>* Mandatory inputs for customers</span></p>
+                <div style="clear:both"></div>
+
+            <div class="ui blue submit button" id="submit">Submit</div>
+            <input type="reset" class="ui green button" id="reset" value="Reset" onClick="window.location.reload()" />
+        </form>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="output">
+        <form class="ui form small">
+            <!-- the form fields are included before #csvDownload -->
+            <div class="ui green button" id="csvDownload">Download as CSV</div>
+
+        </form>
+    </div>
+
+
+</div>
+    <div class="seven wide column" id="canvas_part">
+        <div class="two wide column"><span class="noselect"><b>Controls</b></span></div>
+        <div class="three wide column">
+
+            <i class="zoom icon noselect control large" id="zoomIn"></i>
+            <i class="zoom out icon noselect control large" id="zoomOut"></i>
+
+            <i class="refresh icon noselect control large" id="resetTransformation"></i>
+            <span class="noselect">Reset</span>
+        </div>
+        <div class="three wide column">
+
+
+            <i class="move icon noselect large"></i>
+            <span class="noselect">Drag with mouse</span>
+        </div>
+        <div id="loadingSegment" class="ui segment">
+            <div class="ui active inverted dimmer">
+                <div class="ui large text loader notvisible" id="loadingDimmer">Loading
+                </div>
+            </div>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+</main>
+<script src="js/lib/form-validation.js"></script>
+<script src="js/lib/app.js"></script>
+</body>
+
+</html>
