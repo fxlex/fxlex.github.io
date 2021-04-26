@@ -20,7 +20,7 @@ const Content = () =>
           <Card.Content>
             <Card.Header>Alexander Pann, B.Sc.</Card.Header>
             <Card.Meta>
-              <span>Computer Science</span>
+              <span>Computer Scientist</span>
             </Card.Meta>
             <Card.Description>
               Alexander is a computer science student currently studying for his master's degree.<br />

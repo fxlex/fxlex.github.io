@@ -39,3 +39,25 @@ a img:hover {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
 }
+
+.ui.tab {
+  background-color: transparent;
+}
+
+.ui.segment[class*="bottom attached"] {
+  border: none !important;
+}
+
+.wrapped{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ui.menu .active.item, .ui.menu a.item:hover {
+  background: rgba(0,0,0,.20);
+}
+
+.ui.bottom.attached.segment.active.tab {
+  padding: 0;
+}
