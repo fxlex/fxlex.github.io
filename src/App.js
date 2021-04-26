@@ -7,8 +7,7 @@ import React from 'react'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
-import { Grid, Image } from 'semantic-ui-react'
-import { Card, Tab } from 'semantic-ui-react'
+import { Grid, Image, Card, Tab, Breadcrumb, Icon, Reveal } from 'semantic-ui-react'
 
 import Work from './components/work'
 import FieldsOfExpertise from './components/fields_of_expertise'
@@ -29,10 +28,17 @@ const panes = [
 const Content = () =>
   <Grid id="content" columns={3}>
     <Grid.Row>
-      <Grid.Column computer={1} largeScreen={4} />
+      <Grid.Column computer={1} largeScreen={3} />
       <Grid.Column align="center" computer={4} mobile={16}>
         <Card fluid>
-          <Image src='./me.jpg' wrapped ui={false} alt="Alexander Pann" />
+          <Reveal animated='fade'>
+            <Reveal.Content visible>
+              <Image src='./me.jpg' fluid />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+              <Image src='./me_color.jpeg' fluid  />
+            </Reveal.Content>
+          </Reveal>
           <Card.Content>
             <Card.Header>Alexander Pann, B.Sc.</Card.Header>
             <Card.Meta>
@@ -42,17 +48,23 @@ const Content = () =>
               Alexander is a computer science student currently studying for his master's degree.<br />
             </Card.Description>
             <Card.Content extra>
-              <a href="https://alexanderpann.wordpress.com/">
-                [MPS Blog]
-              </a>
-
-              <a href="https://twitter.com/alexanderpann">
-                [Twitter]
-              </a>
-
-              <a href="mailto:alexander.pann@gmail.com">
-                [Mail]
-              </a>
+              <Breadcrumb>
+                <Breadcrumb.Section link>
+                  <a href="https://alexanderpann.wordpress.com/" rel="noreferrer" target="_blank">MPS Blog</a>
+                </Breadcrumb.Section>
+                <Breadcrumb.Divider />
+                <Breadcrumb.Section link>
+                  <a href="https://twitter.com/alexanderpann" rel="noreferrer" target="_blank"><Icon name='twitter' /></a>
+                </Breadcrumb.Section>
+                <Breadcrumb.Divider />
+                <Breadcrumb.Section link>
+                  <a href="https://github.com/fxlex" rel="noreferrer" target="_blank"><Icon name='github' /></a>
+                </Breadcrumb.Section>
+                <Breadcrumb.Divider />
+                <Breadcrumb.Section>
+                  <a href="mailto:alexander.pann@gmail.com" rel="noreferrer" target="_blank"><Icon name='mail' /></a>
+                </Breadcrumb.Section>
+              </Breadcrumb>
             </Card.Content>
           </Card.Content>
         </Card>

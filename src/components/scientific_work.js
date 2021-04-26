@@ -18,13 +18,13 @@ export default class ScientificWorkComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="small"/>
+                <Image href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="medium"/>
             </Card.Content>
         </Card>
             
         <Card fluid>
             <Card.Content>
-                <Card.Header>In-Depth Scientic Works </Card.Header>
+                <Card.Header>In-Depth Scientific Works </Card.Header>
                 <Card.Meta>
                 <span className='date'>2020 - 2021</span>
                 </Card.Meta>

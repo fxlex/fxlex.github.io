@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Embed, Grid } from 'semantic-ui-react'
 
 export default class AppComponent extends React.Component {
 
@@ -18,7 +18,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/Gelato.JPG' alt="Wafer Layout and Yield Simulator" size="small" />
+                <Image href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/Gelato.JPG' alt="Wafer Layout and Yield Simulator" size="medium" />
                 <br />
             Simulator for Semiconductor Fabrication Yield
             </Card.Content>
@@ -34,7 +34,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://weill.cornell.edu/" rel="noreferrer" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="small" />
+                <Image href="https://weill.cornell.edu/" rel="noreferrer" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="medium" />
             </Card.Content>
         </Card>
         <Card fluid>
@@ -48,7 +48,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="http://ams.com" target="_blank" rel="noreferrer" src='images/ams.svg' size="small" alt="ams AG logo" />
+                <Image href="http://ams.com" target="_blank" rel="noreferrer" src='images/ams.svg' size="medium" alt="ams AG logo" />
             </Card.Content>
         </Card>
         <Card fluid>
@@ -62,7 +62,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="small" />
+                <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="medium" />
             </Card.Content>
         </Card>
         <Card fluid>
@@ -76,7 +76,11 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://www.youtube.com/watch?v=q5y2tZ_kLn8" target="_blank" rel="noreferrer" src='images/tire_pressure_ams.png' alt="Tire pressure Simulator" size="small" />
+            <Grid columns={1}>
+                <Grid.Column computer={16} widescreen={8}>
+                    <Embed id='q5y2tZ_kLn8' placeholder='/images/tire_pressure_ams.png' source='youtube' />
+                </Grid.Column>
+            </Grid>
             </Card.Content>
         </Card>
         <Card fluid>
@@ -86,11 +90,16 @@ export default class AppComponent extends React.Component {
                     <span className='date'>2015</span>
                 </Card.Meta>
                 <Card.Description>
-                    Development of a demonstrator for mobile phone gesture sensor, presented at the World Mobile (WMC) Congress in Barcelona and at the Consumer Electronic Show (CES) in Las Vegas 2016
+                <div class="ui justified container">
+                    <p> 
+                        Development of a demonstrator for mobile phone gesture sensor, presented at the World Mobile (WMC) Congress in Barcelona and at the Consumer Electronic Show (CES) in Las Vegas 2016
+                    </p>
+                </div>
+                   
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="#" src='images/proxibird.png' alt="Proxibird" size="small" />
+                <Image href="#" src='images/proxibird.png' alt="Proxibird" size="medium" />
             </Card.Content>
         </Card>
         <Card fluid>
@@ -104,8 +113,11 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://www.youtube.com/watch?v=nhD6PNcnAys" rel="noreferrer" target="_blank" src='images/hue_gesture_video.png' alt="Tire pressure Simulator" size="small" />
-
+                <Grid columns={1}>
+                    <Grid.Column computer={16} widescreen={8}>
+                        <Embed id='nhD6PNcnAys' placeholder='/images/hue_gesture_video.png' source='youtube' />
+                    </Grid.Column>
+                </Grid>
             </Card.Content>
         </Card>
 
@@ -120,7 +132,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="http://www.baumeisterpann.at" rel="noreferrer" target="_blank" src='images/baumeisterpann.jpg' alt="Baumeister Pann" size="small" />
+                <Image href="http://www.baumeisterpann.at" rel="noreferrer" target="_blank" src='images/baumeisterpann.jpg' alt="Baumeister Pann" size="medium" />
             </Card.Content>
         </Card>
     </>
