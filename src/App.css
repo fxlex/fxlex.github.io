@@ -27,7 +27,7 @@ a img:hover {
     -o-transform: scale(1.5) !important;
     transform: scale(1.5) !important;
     position: relative;
-    z-index: 2;
+    z-index: 999;
     border: 1px solid black;
 }
 

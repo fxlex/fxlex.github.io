@@ -18,7 +18,7 @@ export default class PublicationsComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./publications/csh.pdf" rel="noreferrer" target="_blank" src='images/csh.png' alt="Cold Spring Harbor" size="medium"/>
+                <Image rounded href="./publications/csh.pdf" rel="noreferrer" target="_blank" src='images/csh.png' alt="Cold Spring Harbor" size="medium"/>
             </Card.Content>
         </Card>
 
@@ -33,7 +33,7 @@ export default class PublicationsComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://books.google.at/books?id=A9x8BgAAQBAJ&dq=MetaR+fab+ien+campagne+Alexander+Pann&hl=de&source=gbs_navlinks_s" rel="noreferrer" target="_blank" src='images/metar.png' alt="MetaR" size="medium"/>
+                <Image rounded href="https://books.google.at/books?id=A9x8BgAAQBAJ&dq=MetaR+fab+ien+campagne+Alexander+Pann&hl=de&source=gbs_navlinks_s" rel="noreferrer" target="_blank" src='images/metar.png' alt="MetaR" size="medium"/>
             </Card.Content>
         </Card>
 
@@ -48,7 +48,7 @@ export default class PublicationsComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./publications/Processing.pdf" rel="noreferrer" target="_blank" src='images/processing_cover.png' alt="Processing" size="medium"/>
+                <Image rounded href="./publications/Processing.pdf" rel="noreferrer" target="_blank" src='images/processing_cover.png' alt="Processing" size="medium"/>
             </Card.Content>
         </Card>
     </>

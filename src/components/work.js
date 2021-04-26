@@ -18,7 +18,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/Gelato.JPG' alt="Wafer Layout and Yield Simulator" size="medium" />
+                <Image rounded href="./Wafer_Layout_and_Yield_Simulator" rel="noreferrer" target="_blank" src='images/gelato.png' alt="Wafer Layout and Yield Simulator" size="medium" />
                 <br />
             Simulator for Semiconductor Fabrication Yield
             </Card.Content>
@@ -62,9 +62,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="medium" />
+                <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="medium" />
                 <br /><br />
-                <Image href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.webp' alt="EP45" size="medium" />
+                <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.webp' alt="EP45" size="medium" />
             </Card.Content>
         </Card>
         <Card fluid>

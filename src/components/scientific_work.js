@@ -18,7 +18,7 @@ export default class ScientificWorkComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="medium"/>
+                <Image rounded href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="medium"/>
             </Card.Content>
         </Card>
             
