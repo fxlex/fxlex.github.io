@@ -1,0 +1,79 @@
+{
+  "exposureField": {
+    "elements": {
+      "exposureFieldX": {
+        "text": "Exposure field x",
+        "type":"float",
+        "unit": "µm"
+      },
+      "exposureFieldY": {
+        "text": "Exposure field y",
+        "type":"float",
+        "unit": "µm"
+      }
+    }
+  },
+  "arraySize": {
+    "elements": {
+      "arraySizeX": {
+        "text": "Array size x",
+        "type":"float",
+        "unit": "dice"
+      },
+      "arraySizeY": {
+        "text": "Array size y",
+        "type":"float",
+        "unit": "dice"
+      }
+    }
+  },
+  "stepOffset": {
+    "elements": {
+      "stepOffsetX": {
+        "text": "Step offset x",
+        "type":"float",
+        "unit": "µm"
+      },
+      "stepOffsetY": {
+        "text": "Step offset y",
+        "type":"float",
+        "unit": "µm"
+      }
+    }
+  },
+  "goodSteps": {
+    "text": "Good steps",
+    "type":"float",
+    "unit": "steps"
+  },
+  "grossDicePerWafer": {
+    "text": "Gross dice per wafer (GDW)",
+    "type":"float",
+    "unit": "pcs"
+  },
+  "grossDicePerLot": {
+    "text": "Gross dice per lot",
+    "type":"float",
+    "unit": "pcs"
+  },
+  "grossDicePerLot": {
+    "text": "Gross dice per lot",
+    "type":"float",
+    "unit": "pcs"
+  },
+  "yieldModelOutput": {
+    "text": "Yield",
+    "type":"float",
+    "unit": "%"
+  },
+  "netDicePerWafer": {
+    "text": "Net dice per wafer(NDW)",
+    "type":"float",
+    "unit": "pcs"
+  },
+  "netDicePerLot": {
+    "text": "Net dice per lot",
+    "type":"float",
+    "unit": "pcs"
+  }
+}
