@@ -15,18 +15,6 @@ const panes = [
   <Tab.Pane>
     <Card fluid>
       <Card.Content>
-        <Card.Header>Patent: Multi Focus Lens Camera for Mobile Phones </Card.Header>
-        <Card.Meta>
-          <span className='date'>2020</span>
-        </Card.Meta>
-        <Card.Description>
-      Status: pending<br />
-    Countries: USA, Europe, China, Korea, Japan
-        </Card.Description>
-      </Card.Content>
-    </Card>
-    <Card fluid>
-      <Card.Content>
         <Card.Header> Freelance work for ams AG</Card.Header>
         <Card.Meta>
           <span className='date'>2013 - present</span>
