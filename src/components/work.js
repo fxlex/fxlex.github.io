@@ -101,7 +101,7 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="#" src='images/proxibird.png' alt="Proxibird" size="medium" />
+                <Image href="https://apktom.com/android-games/com-proxibird/" src='images/proxibird.png' alt="Proxibird" size="medium" />
             </Card.Content>
         </Card>
         <Card fluid>

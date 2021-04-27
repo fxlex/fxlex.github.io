@@ -13,12 +13,15 @@ import {
   BrowserRouter as Router,
   matchPath,
   NavLink,
-  Switch
+  Switch,
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import Work from './components/work'
 import FieldsOfExpertise from './components/fields_of_expertise'
 import FieldsOfInterest from './components/fields_of_interest'
+import Hobbies from './components/hobbies'
 import Publications from './components/publications'
 import ScientificWork from './components/scientific_work'
 import Patents from './components/patents'
@@ -39,7 +42,7 @@ const panes = [
     to: "/expertise_and_interest",
     exact: true,
     key: "expertise"
-  }, render: () => <Tab.Pane><FieldsOfExpertise /><FieldsOfInterest /></Tab.Pane>},
+  }, render: () => <Tab.Pane><FieldsOfExpertise /><FieldsOfInterest /><Hobbies /></Tab.Pane>},
   { menuItem: {
     as: NavLink,
     id: "publications",
@@ -73,6 +76,19 @@ const defaultActiveIndex = Math.max(0,panes.findIndex(pane => {
     exact: true
   });
 }));
+
+class DebugRouter extends Router {
+  constructor(props){
+    super(props);
+    console.log('initial history is: ', JSON.stringify(this.history, null,2))
+    this.history.listen((location, action)=>{
+      console.log(
+        `The current URL is ${location.pathname}${location.search}${location.hash}`
+      )
+      console.log(`The last navigation action was ${action}`, JSON.stringify(this.history, null,2));
+    });
+  }
+}
 
 class Content extends React.Component {
   
@@ -127,11 +143,14 @@ class Content extends React.Component {
           </Card>
         </Grid.Column>
         <Grid.Column largeScreen={6} computer={9} mobile={16}>
-          <Router>
+          <DebugRouter>
             <Switch>
               <Tab panes={panes} defaultActiveIndex={defaultActiveIndex}   menu={{ borderless: true, attached: false, tabular: false, className: "wrapped" }} />
             </Switch>
-          </Router>
+            <Route path="*">
+              <Redirect to="/" />
+              </Route>
+          </DebugRouter>
         </Grid.Column>
       </Grid.Row>
     </Grid>
