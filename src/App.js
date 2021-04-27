@@ -77,19 +77,6 @@ const defaultActiveIndex = Math.max(0,panes.findIndex(pane => {
   });
 }));
 
-class DebugRouter extends Router {
-  constructor(props){
-    super(props);
-    console.log('initial history is: ', JSON.stringify(this.history, null,2))
-    this.history.listen((location, action)=>{
-      console.log(
-        `The current URL is ${location.pathname}${location.search}${location.hash}`
-      )
-      console.log(`The last navigation action was ${action}`, JSON.stringify(this.history, null,2));
-    });
-  }
-}
-
 class Content extends React.Component {
   
   render() {
@@ -143,14 +130,14 @@ class Content extends React.Component {
           </Card>
         </Grid.Column>
         <Grid.Column largeScreen={6} computer={9} mobile={16}>
-          <DebugRouter>
+          <Router>
             <Switch>
               <Tab panes={panes} defaultActiveIndex={defaultActiveIndex}   menu={{ borderless: true, attached: false, tabular: false, className: "wrapped" }} />
             </Switch>
             <Route path="*">
               <Redirect to="/" />
               </Route>
-          </DebugRouter>
+          </Router>
         </Grid.Column>
       </Grid.Row>
     </Grid>
