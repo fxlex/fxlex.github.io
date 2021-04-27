@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, List, Header, Icon, Image } from 'semantic-ui-react'
+import { Segment, List, Header, Icon } from 'semantic-ui-react'
 
 export default class HobbiesComponent extends React.Component {
 
