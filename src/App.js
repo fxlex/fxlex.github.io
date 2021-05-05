@@ -134,6 +134,9 @@ class Content extends React.Component {
             <Switch>
               <Tab panes={panes} defaultActiveIndex={defaultActiveIndex}   menu={{ borderless: true, attached: false, tabular: false, className: "wrapped" }} />
             </Switch>
+            <Route exact path="/wafer_layout" render={() => {window.location.href="/Wafer_Layout_and_Yield_Simulator/index.html"}}>
+              
+            </Route>
             <Route path="*">
               <Redirect to="/" />
               </Route>
