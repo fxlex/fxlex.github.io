@@ -1,56 +1,31 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
+export const Publication = ({header, date, description, href, src, alt}) => {
+    return (
+    <Card fluid>
+        <Card.Content>
+            <Card.Header>{header}</Card.Header>
+            <Card.Meta>
+            <span className='date'>{date}</span>
+            </Card.Meta>
+            <Card.Description>{description}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+            <Image rounded href={href} rel="noreferrer" target="_blank" src={src} alt={alt} size="medium"/>
+        </Card.Content>
+    </Card>
+    )
+  }
+
 export default class PublicationsComponent extends React.Component {
 
     render() {
-    
     return (
     <>
-        <Card fluid>
-            <Card.Content>
-                <Card.Header>Paper: MetaR - Towards an R Notebook with Composable Languages</Card.Header>
-                <Card.Meta>
-                <span className='date'>2016</span>
-                </Card.Meta>
-                <Card.Description>
-            Co-author of paper for congress at the Cold Spring Harbor Laboratory, Long Island, New York
-                </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Image rounded href="./publications/csh.pdf" rel="noreferrer" target="_blank" src='images/csh.png' alt="Cold Spring Harbor" size="medium"/>
-            </Card.Content>
-        </Card>
-
-        <Card fluid>
-            <Card.Content>
-                <Card.Header>Booklet: MetaR</Card.Header>
-                <Card.Meta>
-                <span className='date'>2016</span>
-                </Card.Meta>
-                <Card.Description>
-            Co-author of booklet MetaR (JetBrains MPS)
-                </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Image rounded href="https://www.google.at/search?tbm=bks&hl=de&q=MetaR+Alexander+Pann" rel="noreferrer" target="_blank" src='images/metar.png' alt="MetaR" size="medium"/>
-            </Card.Content>
-        </Card>
-
-        <Card fluid>
-            <Card.Content>
-                <Card.Header>Pre-scientific work: Processing </Card.Header>
-                <Card.Meta>
-                <span className='date'>2012</span>
-                </Card.Meta>
-                <Card.Description>
-                Title: Processing - Entdecke deine Fähigkeiten
-                </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Image rounded href="./publications/Processing.pdf" rel="noreferrer" target="_blank" src='images/processing_cover.png' alt="Processing" size="medium"/>
-            </Card.Content>
-        </Card>
+        <Publication header="Paper: MetaR - Towards an R Notebook with Composable Languages" date="2016" description="Co-author of paper for congress at the Cold Spring Harbor Laboratory, Long Island, New York" href="./publications/csh.pdf" src="images/csh.png" alt="Cold Spring Harbor" />
+        <Publication header="Booklet: MetaR" date="2016" description="Co-author of booklet MetaR (JetBrains MPS)" href="https://www.google.at/search?tbm=bks&hl=de&q=MetaR+Alexander+Pann" src="images/metar.png" alt="MetaR" />
+        <Publication header="Pre-scientific work: Processing" date="2012" description="Title: Processing - Entdecke deine Fähigkeiten" href="./publications/Processing.pdf" src="images/processing_cover.png" alt="Processing" />
     </>
     )
     }
