@@ -19,7 +19,9 @@ export default class PatentsComponent extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Image src="./images/vision.svg" alt="vision" size="medium" />
+          <figure>
+            <Image src="./images/vision.svg" alt="vision" size="medium" />
+          </figure>
         </Card.Content>
       </Card>
     </>

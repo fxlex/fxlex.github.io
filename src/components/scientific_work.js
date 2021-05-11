@@ -18,7 +18,9 @@ export default class ScientificWorkComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image rounded href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="medium"/>
+                <figure>
+                    <Image rounded href="./publications/bachelor_thesis.pdf" rel="noreferrer" target="_blank" src='images/bachelor_thesis.png' alt="Processing" size="medium"/>
+                </figure>
             </Card.Content>
         </Card>
             
@@ -36,7 +38,9 @@ export default class ScientificWorkComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image src="./images/idea.svg" alt="idea" size="medium" />
+                <figure>
+                    <Image src="./images/idea.svg" alt="idea" size="medium" />
+                </figure>
             </Card.Content>
         </Card>
     </>

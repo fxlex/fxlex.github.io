@@ -12,7 +12,9 @@ export const Publication = ({header, date, description, href, src, alt}) => {
             <Card.Description>{description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-            <Image rounded href={href} rel="noreferrer" target="_blank" src={src} alt={alt} size="medium"/>
+            <figure>
+                <Image rounded href={href} rel="noreferrer" target="_blank" src={src} alt={alt} size="medium"/>
+            </figure>
         </Card.Content>
     </Card>
     )

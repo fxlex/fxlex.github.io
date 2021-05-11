@@ -18,7 +18,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image rounded href="/wafer_layout" rel="noreferrer" target="_blank" src='images/gelato.png' alt="Wafer Layout and Yield Simulator" size="medium" />
+               <figure>
+                    <Image rounded href="/wafer_layout" rel="noreferrer" target="_blank" src='images/gelato.png' alt="Wafer Layout and Yield Simulator" size="medium" />
+                </figure> 
                 <br />
             Simulator for Semiconductor Fabrication Yield [Try online]
             </Card.Content>
@@ -34,7 +36,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://weill.cornell.edu/" rel="noreferrer" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="medium" />
+                <figure>
+                    <Image href="https://weill.cornell.edu/" rel="noreferrer" target="_blank" src='images/weill_cornell.png' alt="Weill Cornell Medicine" size="medium" />
+                </figure>
             </Card.Content>
         </Card>
         <Card fluid>
@@ -48,7 +52,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="http://ams.com" target="_blank" rel="noreferrer" src='images/ams.svg' size="medium" alt="ams AG logo" />
+                <figure>
+                    <Image href="http://ams.com" target="_blank" rel="noreferrer" src='images/ams.svg' size="medium" alt="ams AG logo" />
+                </figure>
             </Card.Content>
         </Card>
         <Card fluid>
@@ -62,9 +68,13 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="medium" />
+                <figure>
+                    <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.png' alt="EP45" size="medium" />
+                </figure>
                 <br /><br />
-                <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.webp' alt="EP45" size="medium" />
+                <figure>
+                    <Image rounded href="https://apkcombo.com/playback-karaoke-player-pro/com.ep45.pro/" rel="noreferrer" target="_blank" src='images/ep45.webp' alt="EP45" size="medium" />
+                </figure>
             </Card.Content>
         </Card>
         <Card fluid>
@@ -101,7 +111,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="https://apktom.com/android-games/com-proxibird/" src='images/proxibird.png' alt="Proxibird" size="medium" />
+                <figure>
+                    <Image href="https://apktom.com/android-games/com-proxibird/" src='images/proxibird.png' alt="Proxibird" size="medium" />
+                </figure>
             </Card.Content>
         </Card>
         <Card fluid>
@@ -134,7 +146,9 @@ export default class AppComponent extends React.Component {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Image href="http://www.baumeisterpann.at" rel="noreferrer" target="_blank" src='images/baumeisterpann.jpg' alt="Baumeister Pann" size="medium" />
+                <figure>
+                    <Image href="http://www.baumeisterpann.at" rel="noreferrer" target="_blank" src='images/baumeisterpann.jpg' alt="Baumeister Pann" size="medium" />
+                </figure>
             </Card.Content>
         </Card>
     </>
